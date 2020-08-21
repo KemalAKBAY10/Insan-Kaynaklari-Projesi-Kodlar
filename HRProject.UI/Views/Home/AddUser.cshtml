@@ -1,0 +1,234 @@
+﻿@model HRProject.UI.Models.HomeControllerModels.AddUserPageModel
+@{
+    ViewBag.Title = "AddUser";
+}
+
+<div class="row my-5">
+    <div class="col-md-10 offset-1">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group row">
+                @if (ViewBag.UpdateUserResult != null)
+                {
+                    <h3>@ViewBag.UpdateUserResult</h3>
+                }
+            </div>
+            <div class="form-group row">
+                <div class="col-md-9 text-left">
+                    <h2 class="text-info float-left"><span class="fa fa-plus mr-2"></span>ADD USER </h2>
+                </div>
+                <div class="col-md-3 text-right">
+                    <a href="@Url.Action("Index","Home")" class="btn btn-danger btn-md float-right"><span class="fa fa-times"></span></a>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">UserID</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.User.USERID, new { @class = "form-control", type = "text", required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">FIRSTNAME</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.User.FIRSTNAME, new { @class = "form-control", type = "text", required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">LASTNAME</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.User.LASTNAME, new { @class = "form-control", type = "text", required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">MANAGERUSERID</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.User.MANAGERUSERID, new { @class = "form-control", type = "text", required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">COSTCENTER</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.User.COSTCENTER, new { @class = "form-control", type = "text", required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">COMPANY</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.User.COMPANY, new { @class = "form-control", type = "text", required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">STATUS</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.User.STATUS, new { @class = "form-control", type = "text", required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">DEPARTMENTID</label>
+                <div class="col-sm-10">
+                    @Html.DropDownListFor(Model=>Model.User.DEPARTMENTID, ((List<HRProject.Entities.HRDepartments>)ViewBag.Departments).Select(x => new SelectListItem()
+                       {
+                           Text = x.DEPARTMENTNAME,
+                           Value = x.DEPARTMENTID
+                       }), new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">PROFESSIONID</label>
+                <div class="col-sm-10">
+                    @Html.DropDownListFor(Model=>Model.User.PROFESSIONID, ((List<HRProject.Entities.HRProfessions>)ViewBag.Professions).Select(x => new SelectListItem()
+                       {
+                           Text = x.PROFESSIONNAME,
+                           Value = x.PROFESSIONID
+                       }), new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">POSITIONID</label>
+                <div class="col-sm-10">
+                    @Html.DropDownListFor(Model=>Model.User.POSITIONID, ((List<HRProject.Entities.HRPositions>)ViewBag.Positions).Select(x => new SelectListItem()
+                      {
+                          Text = x.POSITIONNAME,
+                          Value = x.POSITIONID
+                      }), new { @class = "form-control" })
+                </div>
+            </div>
+            <hr class="text-muted"/>
+            <h6 class="text-muted">USER DETAİL</h6>
+            <hr class="text-muted" />
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">SUBCOMPANY</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.SUBCOMPANY, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">COLLAR</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.COLLAR, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">SEX</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.SEX, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">MARITALSTATUS</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.MARITALSTATUS, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">CHILD</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.CHILD, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">LOCATION</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.LOCATION, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">PAYROLL</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.PAYROLL, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">DATEOFWORK</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.DATEOFWORK, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">DATEOFBIRTH</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.DATEOFBIRTH, new { @class = "form-control", type = "text" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">PLACEOFBIRTH</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.PLACEOFBIRTH, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">ADUSERNAME</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.ADUSERNAME, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">PASSWORD</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.PASSWORD, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">EMAIL</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.EMAIL, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">ADDRESS</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.ADDRESS, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">BANKSWITCH</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.BANKSWITCH, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">BANKACCOUNT</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.BANKACCOUNT, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">IBAN</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.IBAN, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">TCNO</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.TCNO, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">LANGUAGE</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.LANGUAGE, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">BLOODGROUP</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.BLOODGROUP, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">PHONENUMBER</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.UserDetail.PHONENUMBER, new { @class = "form-control", type = "text"})
+                </div>
+            </div>
+            <div class="form-group row my-5">
+                <div class="col-md-12 text-right">
+                    <a class="btn btn-lg btn-outline-danger" href="@Url.Action("Index","Home")"><span class="fa fa-times mr-2"></span>CANCEL</a>
+                    <button class="btn btn-lg btn-success ml-3" type="submit"><span class="fa fa-save mr-2"></span>SAVE</button>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

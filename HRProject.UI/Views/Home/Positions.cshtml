@@ -1,0 +1,43 @@
+﻿@model HRProject.UI.Models.HomeControllerModels.PositionsPageModel
+@{
+    ViewBag.Title = "Positions";
+}
+
+<div class="row mb-5">
+    <div class="col-md-12 text-right">
+        <a href="@Url.Action("AddPosition","Home")" class="btn btn-lg btn-success"><span class="fa fa-plus mr-4"></span>NEW POSITION</a>
+    </div>
+</div>
+
+<table id="PositionsTable" class="table my-5 table-hover text-center" style="width:100%">
+    <thead>
+        <tr class="text-center">
+            <th>POSITION ID</th>
+            <th>POSITION NAME</th>
+            <th>EDIT</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (HRProject.Entities.HRPositions item in Model.Positions)
+        {
+            <tr>
+                <td>@item.POSITIONID</td>
+                <td>@item.POSITIONNAME</td>
+                <td class="text-center">
+                    <a href="@Url.Action("EditPosition","Home",new {PositionId=item.POSITIONID})">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+<script>
+    document.getElementById("HomePositionsLink").className = "nav-link text-danger";
+</script>
+
+
+

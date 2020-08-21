@@ -1,0 +1,41 @@
+﻿@model HRProject.UI.Models.HomeControllerModels.ProfessionsPageModel
+@{
+    ViewBag.Title = "Professions";
+}
+
+<div class="row mb-5">
+    <div class="col-md-12 text-right">
+        <a href="@Url.Action("AddProfession","Home")" class="btn btn-lg btn-success"><span class="fa fa-plus mr-4"></span>NEW PROFESSION</a>
+    </div>
+</div>
+
+<table id="ProfessionsTable" class="table my-5 table-hover text-center" style="width:100%">
+    <thead>
+        <tr class="text-center">
+            <th>PROFESSION ID</th>
+            <th>PROFESSION NAME</th>
+            <th>EDIT</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (HRProject.Entities.HRProfessions item in Model.Professions)
+        {
+            <tr>
+                <td>@item.PROFESSIONID</td>
+                <td>@item.PROFESSIONNAME</td>
+                <td class="text-center">
+                    <a href="@Url.Action("EditProfessions","Home",new {ProfessionId=item.PROFESSIONID})">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+<script>
+    document.getElementById("HomeProfessionsLink").className = "nav-link text-danger";
+</script>
+

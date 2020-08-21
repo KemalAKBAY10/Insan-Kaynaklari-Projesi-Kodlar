@@ -1,0 +1,38 @@
+﻿@model HRProject.UI.Models.HomeControllerModels.IndexPageModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row mb-5">
+    <div class="col-md-12 text-right">
+        <a href="@Url.Action("AddUser","Home")" class="btn btn-lg btn-success"><span class="fa fa-plus mr-4"></span>NEW USER</a>
+    </div>    
+</div>
+
+<table id="IndexTable" class="table my-5 table-hover text-center" style="width:100%">
+    <thead>
+        <tr class="text-center">
+            <th>USER ID</th>
+            <th>FIRSTNAME</th>
+            <th>LASTNAME</th>
+            <th>EDIT</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (HRProject.Entities.HRUsers item in Model.UserList)
+        {
+            <tr>
+                <td>@item.USERID</td>
+                <td>@item.FIRSTNAME</td>
+                <td>@item.LASTNAME</td>
+                <td class="text-center"><a href="@Url.Action("UserPage","Home",new {UserId=item.USERID})"><i class="fa fa-edit"></i></a></td>
+            </tr>
+        }
+        
+    </tbody>
+</table>
+
+
+<script>
+    document.getElementById("HomeIndexLink").className = "nav-link text-danger";
+</script>

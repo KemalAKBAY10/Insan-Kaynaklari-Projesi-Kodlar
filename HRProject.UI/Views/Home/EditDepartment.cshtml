@@ -1,0 +1,70 @@
+﻿@model HRProject.UI.Models.HomeControllerModels.EditDepartmentPageModel
+@{
+    ViewBag.Title = "EditDepartment";
+}
+
+
+<div class="row my-5">
+    <div class="col-md-10 offset-1">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group row">
+                @if (ViewBag.EditDepartmentResult != null)
+                {
+                    <h3>@ViewBag.EditDepartmentResult</h3>
+                }
+            </div>
+            <div class="form-group row">
+                <div class="col-md-9 text-left">
+                    <h2 class="text-info float-left">DEPARTMENT ID: @Model.SelectedDepartment.DEPARTMENTID </h2>
+                </div>
+                @*<div class="col-md-3 text-right">
+                    <a href="@Url.Action("Departments","Home")" class="btn btn-danger btn-md float-right"><span class="fa fa-times"></span></a>
+                </div>*@
+
+            </div>
+            @Html.HiddenFor(model => model.SelectedDepartment.DEPARTMENTID)
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">DEPARTMENTNAME</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedDepartment.DEPARTMENTNAME, new { @class = "form-control", type = "text", value = Model.SelectedDepartment.DEPARTMENTNAME, required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">MANAGERID</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedDepartment.MANAGERID, new { @class = "form-control", type = "text", value = Model.SelectedDepartment.MANAGERID, required = "required" })
+                </div>
+            </div>
+            <div class="form-group row my-5">
+                <div class="col-md-4 text-left p-0">
+                    <a class="btn btn-md btn-danger ml-3" href="#" data-toggle="modal" data-target="#deleteDepartmentModal"><span class="fa fa-trash mr-2"></span>DELETE DEPARTMENT</a>
+                </div>
+                <div class="col-md-8 text-right">
+                    <a class="btn btn-lg btn-outline-danger" href="@Url.Action("Departments","Home")"><span class="fa fa-times mr-2"></span>CANCEL</a>
+                    <button class="btn btn-lg btn-success ml-3" type="submit"><span class="fa fa-save mr-2"></span>SAVE</button>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+<!-- Delete Modal-->
+<div class="modal fade" id="deleteDepartmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-danger" id="exampleModalLabel"><span class="fa fa-trash fa-2x mr-2"></span>DELETE DEPARTMENT</h4>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Are you sure you want to delete the department?</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger" href="@Url.Action("DeleteDepartment","Home",new {DepartmentId=Model.SelectedDepartment.DEPARTMENTID })"><span class="fa fa-trash mr-2"></span>DELETE</a>
+            </div>
+        </div>
+    </div>
+</div>

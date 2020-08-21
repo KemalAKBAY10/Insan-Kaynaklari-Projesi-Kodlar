@@ -1,0 +1,126 @@
+﻿@model HRProject.UI.Models.HomeControllerModels.UserPageModel
+@{
+    ViewBag.Title = "UserPage";
+}
+
+<div class="row my-5">
+    <div class="col-md-10 offset-1">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group row">
+                @if (ViewBag.UpdateUserResult != null)
+                {
+                    <h3>@ViewBag.UpdateUserResult</h3>
+                }
+            </div>
+            <div class="form-group row">
+                <div class="col-md-6 text-left">
+                    <h2 class="text-info float-left">USER ID: @Model.SelectedUser.USERID </h2>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("UserDetailsPage","Home",new {UserId=Model.SelectedUser.USERID})" class="btn btn-warning btn-md float-right"><span class="fa fa-info-circle mr-2"></span>USER DETAIL</a>
+                </div>
+
+            </div>
+            @Html.HiddenFor(model => model.SelectedUser.USERID)            
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">FIRSTNAME</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.FIRSTNAME, new { @class = "form-control", type = "text", value = Model.SelectedUser.FIRSTNAME, required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">LASTNAME</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.LASTNAME, new { @class = "form-control", type = "text", value = Model.SelectedUser.LASTNAME, required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">MANAGERUSERID</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.MANAGERUSERID, new { @class = "form-control", type = "text", value = Model.SelectedUser.MANAGERUSERID, required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">COSTCENTER</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.COSTCENTER, new { @class = "form-control", type = "text", value = Model.SelectedUser.COSTCENTER, required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">COMPANY</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.COMPANY, new { @class = "form-control", type = "text", value = Model.SelectedUser.COMPANY, required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">STATUS</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.STATUS, new { @class = "form-control", type = "text", value = Model.SelectedUser.STATUS, required = "required" })
+                </div>
+            </div>
+            <hr />
+            @*TODO:departmendid, professionid,positionid foreign key. seçim olarak gelecek düzenlenecek.*@
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">DEPARTMENTID</label>
+                <div class="col-sm-10">
+                    @Html.DropDownListFor(Model=>Model.SelectedUser.DEPARTMENTID, Model.Departments.Select(x => new SelectListItem()
+                       {
+                           Text = x.DEPARTMENTNAME,
+                           Value = x.DEPARTMENTID
+                       }), new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">PROFESSIONID</label>                
+                <div class="col-sm-10">
+                    @Html.DropDownListFor(Model=>Model.SelectedUser.PROFESSIONID, Model.Professions.Select(x => new SelectListItem()
+                       {
+                           Text = x.PROFESSIONNAME,
+                           Value = x.PROFESSIONID
+                       }), new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">POSITIONID</label>
+                <div class="col-sm-10">
+                    @Html.DropDownListFor(Model=>Model.SelectedUser.POSITIONID, Model.Positions.Select(x => new SelectListItem()
+                      {
+                          Text = x.POSITIONNAME,
+                          Value = x.POSITIONID
+                      }), new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row my-5">
+                <div class="col-md-4 text-left p-0">
+                    <a class="btn btn-md btn-danger ml-3" href="#" data-toggle="modal" data-target="#deleteUserModal"><span class="fa fa-trash mr-2"></span>DELETE USER</a>
+                </div>
+                <div class="col-md-8 text-right">
+                    <a class="btn btn-lg btn-outline-danger" href="@Url.Action("Index","Home")"><span class="fa fa-times mr-2"></span>CANCEL</a>
+                    <button class="btn btn-lg btn-success ml-3" type="submit"><span class="fa fa-save mr-2"></span>SAVE</button>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+<!-- Delete Modal-->
+<div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-danger" id="exampleModalLabel"><span class="fa fa-trash fa-2x mr-2"></span>DELETE USER</h4>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Are you sure you want to delete the user?</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger" href="@Url.Action("DeleteUser","Home",new {UserId=Model.SelectedUser.USERID})"><span class="fa fa-trash mr-2"></span>DELETE</a>
+            </div>
+        </div>
+    </div>
+</div>
+

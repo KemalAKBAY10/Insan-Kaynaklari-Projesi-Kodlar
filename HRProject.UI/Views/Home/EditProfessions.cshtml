@@ -1,0 +1,66 @@
+﻿@model HRProject.UI.Models.HomeControllerModels.EditProfessionPageModel
+@{
+    ViewBag.Title = "EditProfessions";
+}
+
+
+<div class="row my-5">
+    <div class="col-md-10 offset-1">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group row">
+                @if (ViewBag.EditProfessionResult != null)
+                {
+                    <h3>@ViewBag.EditProfessionResult</h3>
+                }
+            </div>
+            <div class="form-group row">
+                <div class="col-md-9 text-left">
+                    <h2 class="text-info float-left">PROFESSION ID: @Model.SelectedProfession.PROFESSIONID </h2>
+                </div>
+                @*<div class="col-md-3 text-right">
+                        <a href="@Url.Action("Departments","Home")" class="btn btn-danger btn-md float-right"><span class="fa fa-times"></span></a>
+                    </div>*@
+
+            </div>
+            @Html.HiddenFor(model => model.SelectedProfession.PROFESSIONID)
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">PROFESSIONNAME</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedProfession.PROFESSIONNAME, new { @class = "form-control", type = "text", value = Model.SelectedProfession.PROFESSIONNAME, required = "required" })
+                </div>
+            </div>
+
+            <div class="form-group row my-5">
+                <div class="col-md-4 text-left p-0">
+                    <a class="btn btn-md btn-danger ml-3" href="#" data-toggle="modal" data-target="#deleteProfessionModal"><span class="fa fa-trash mr-2"></span>DELETE PROFESSION</a>
+                </div>
+                <div class="col-md-8 text-right">
+                    <a class="btn btn-lg btn-outline-danger" href="@Url.Action("Professions","Home")"><span class="fa fa-times mr-2"></span>CANCEL</a>
+                    <button class="btn btn-lg btn-success ml-3" type="submit"><span class="fa fa-save mr-2"></span>SAVE</button>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+<!-- Delete Modal-->
+<div class="modal fade" id="deleteProfessionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-danger" id="exampleModalLabel"><span class="fa fa-trash fa-2x mr-2"></span>DELETE PROFESSION</h4>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Are you sure you want to delete the profession?</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger" href="@Url.Action("DeleteProfession","Home",new {DepartmentId=Model.SelectedProfession.PROFESSIONID })"><span class="fa fa-trash mr-2"></span>DELETE</a>
+            </div>
+        </div>
+    </div>
+</div>
+

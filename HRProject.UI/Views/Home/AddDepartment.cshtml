@@ -1,0 +1,49 @@
+﻿@model HRProject.UI.Models.HomeControllerModels.AddDepartmentPageModel
+@{
+    ViewBag.Title = "AddDepartment";
+}
+
+<div class="row my-5">
+    <div class="col-md-10 offset-1">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group row">
+                @if (ViewBag.AddDepartmentResult != null)
+                {
+                    <h3>@ViewBag.AddDepartmentResult</h3>
+                }
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12 text-left">
+                    <h1 class="text-info float-left"><span class="fa fa-plus mr-2"></span>ADD DEPARTMENT</h1>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">DEPARTMENTID</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model =>model.Department.DEPARTMENTID , new { @class = "form-control", type = "text", required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">DEPARTMENTNAME</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.Department.DEPARTMENTNAME, new { @class = "form-control", type = "text", required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">MANAGERID</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.Department.MANAGERID, new { @class = "form-control", type = "text", required = "required" })
+                </div>
+            </div>
+            <div class="form-group row">               
+                <div class="col-md-12 text-right">
+                    <a class="btn btn-lg btn-outline-danger" href="@Url.Action("Departments","Home")"><span class="fa fa-times mr-2"></span>CANCEL</a>
+                    <button class="btn btn-lg btn-success ml-3" type="submit"><span class="fa fa-plus mr-2"></span>ADD</button>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+

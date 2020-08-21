@@ -1,0 +1,42 @@
+﻿@model HRProject.UI.Models.HomeControllerModels.DepartmentsPageModel
+@{
+    ViewBag.Title = "Departments";
+}
+
+<div class="row mb-5">
+    <div class="col-md-12 text-right">
+        <a href="@Url.Action("AddDepartment","Home")" class="btn btn-lg btn-success"><span class="fa fa-plus mr-4"></span>NEW DEPARTMENT</a>
+    </div>
+</div>
+
+<table id="DepartmentsTable" class="table my-5 table-hover text-center" style="width:100%">
+    <thead>
+        <tr class="text-center">
+            <th>DEPARTMENT ID</th>
+            <th>DEPARTMENT NAME</th>
+            <th>MANAGER</th>
+            <th>EDIT</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (HRProject.Entities.HRDepartments item in Model.Departments)
+        {
+            <tr>
+                <td>@item.DEPARTMENTID</td>
+                <td>@item.DEPARTMENTNAME</td>
+                <td>@item.MANAGERID</td>
+                <td class="text-center">
+                    <a href="@Url.Action("EditDepartment","Home",new {DepartmentId=item.DEPARTMENTID})">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+<script>
+    document.getElementById("HomeDepartmentsLink").className = "nav-link text-danger";
+</script>

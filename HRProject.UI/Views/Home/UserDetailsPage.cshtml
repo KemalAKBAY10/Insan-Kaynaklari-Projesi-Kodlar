@@ -1,0 +1,162 @@
+﻿@model HRProject.UI.Models.HomeControllerModels.UserDetailsPageModel
+@{
+    ViewBag.Title = "UserDetailsPage";
+}
+
+<div class="row my-5">
+    <div class="col-md-10 offset-1">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group row">
+                @if (ViewBag.UpdateUserDetailsResult != null)
+                {
+                    <h3>@ViewBag.UpdateUserDetailsResult</h3>
+                }
+            </div>
+            <div class="form-group row">
+                <div class="col-md-9 text-left">
+                    <h2 class="text-info float-left">@Model.UserFirstNameAndLastName<small class="text-muted">(@Model.SelectedUser.USERID)</small> </h2>
+                </div>
+                <div class="col-md-3 text-right">
+                    <a href="@Url.Action("UserPage","Home",new {UserId=Model.SelectedUser.USERID})" class="btn btn-danger btn-md float-right"><span class="fa fa-times"></span></a>
+                </div>
+            </div>
+            @Html.HiddenFor(model => model.SelectedUser.USERID)
+            @Html.HiddenFor(model=>model.UserFirstNameAndLastName)
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">SUBCOMPANY</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.SUBCOMPANY, new { @class = "form-control", type = "text", value = Model.SelectedUser.SUBCOMPANY})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">COLLAR</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.COLLAR, new { @class = "form-control", type = "text", value = Model.SelectedUser.COLLAR})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">SEX</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.SEX, new { @class = "form-control", type = "text", value = Model.SelectedUser.SEX})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">MARITALSTATUS</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.MARITALSTATUS, new { @class = "form-control", type = "text", value = Model.SelectedUser.MARITALSTATUS})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">CHILD</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.CHILD, new { @class = "form-control", type = "text", value = Model.SelectedUser.CHILD})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">LOCATION</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.LOCATION, new { @class = "form-control", type = "text", value = Model.SelectedUser.LOCATION})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">PAYROLL</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.PAYROLL, new { @class = "form-control", type = "text", value = Model.SelectedUser.PAYROLL})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">DATEOFWORK</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.DATEOFWORK, new { @class = "form-control", type = "text", value = Model.SelectedUser.DATEOFWORK})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">DATEOFBIRTH</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.DATEOFBIRTH, new { @class = "form-control", type = "text", value = Model.SelectedUser.DATEOFBIRTH})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">PLACEOFBIRTH</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.PLACEOFBIRTH, new { @class = "form-control", type = "text", value = Model.SelectedUser.PLACEOFBIRTH})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">ADUSERNAME</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.ADUSERNAME, new { @class = "form-control", type = "text", value = Model.SelectedUser.ADUSERNAME})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">PASSWORD</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.PASSWORD, new { @class = "form-control", type = "text", value = Model.SelectedUser.PASSWORD})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">EMAIL</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.EMAIL, new { @class = "form-control", type = "text", value = Model.SelectedUser.EMAIL})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">ADDRESS</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.ADDRESS, new { @class = "form-control", type = "text", value = Model.SelectedUser.ADDRESS})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">BANKSWITCH</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.BANKSWITCH, new { @class = "form-control", type = "text", value = Model.SelectedUser.BANKSWITCH})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">BANKACCOUNT</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.BANKACCOUNT, new { @class = "form-control", type = "text", value = Model.SelectedUser.BANKACCOUNT})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">IBAN</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.IBAN, new { @class = "form-control", type = "text", value = Model.SelectedUser.IBAN})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">TCNO</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.TCNO, new { @class = "form-control", type = "text", value = Model.SelectedUser.TCNO})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">LANGUAGE</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.LANGUAGE, new { @class = "form-control", type = "text", value = Model.SelectedUser.LANGUAGE})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">BLOODGROUP</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.BLOODGROUP, new { @class = "form-control", type = "text", value = Model.SelectedUser.BLOODGROUP})
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">PHONENUMBER</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.SelectedUser.PHONENUMBER, new { @class = "form-control", type = "text", value = Model.SelectedUser.PHONENUMBER})
+                </div>
+            </div>
+            <div class="form-group row text-right">
+                <div class="col-md-12">
+                    <a class="btn btn-lg btn-outline-danger" href="@Url.Action("UserPage","Home",new { UserId = Model.SelectedUser.USERID })"><span class="fa fa-times mr-2"></span>CANCEL</a>
+                    <button class="btn btn-lg btn-success ml-3" type="submit"><span class="fa fa-save mr-2"></span>SAVE</button>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+
